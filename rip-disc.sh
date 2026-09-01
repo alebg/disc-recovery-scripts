@@ -29,8 +29,10 @@ if [ $EXIT -eq 0 ]; then
     echo "Done! ISO saved: $ISO ($SIZE)"
     echo ""
     echo "Next steps:"
-    echo "  Mount it:   ./mount-iso.sh $ISO"
-    echo "  Convert:    ./convert-vob.sh <name> (after mounting)"
+    echo "  Mount it:        ./mount-iso.sh $ISO"
+    echo ""
+    echo "  If VIDEO DVD:    ./convert-vob.sh $NAME"
+    echo "  If DATA (photos): cp -r /tmp/dvdmount/* ~/DVDs/$NAME/"
 else
     echo ""
     echo "ddrescue exited with errors. Check the log: $LOG"
