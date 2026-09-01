@@ -17,15 +17,14 @@ echo "Mounting $ISO..."
 sudo mount -o loop,ro "$ISO" "$MOUNTPOINT"
 
 if [ $? -eq 0 ]; then
-    sudo chmod -R a+rX "$MOUNTPOINT"
     echo "Mounted at $MOUNTPOINT"
     echo ""
     echo "=== Contents ==="
-    ls -lh "$MOUNTPOINT"/
-    if [ -d "$MOUNTPOINT/VIDEO_TS" ]; then
+    sudo ls -lh "$MOUNTPOINT"/
+    if sudo test -d "$MOUNTPOINT/VIDEO_TS"; then
         echo ""
         echo "=== VIDEO_TS (DVD Video) ==="
-        ls -lh "$MOUNTPOINT/VIDEO_TS/"
+        sudo ls -lh "$MOUNTPOINT/VIDEO_TS/"
         echo ""
         echo "This is a DVD video disc. Convert with:"
         echo "  ./convert-vob.sh <output-name>"
