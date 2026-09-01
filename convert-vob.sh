@@ -20,7 +20,7 @@ if ! sudo test -d "$VIDEODIR"; then
     exit 1
 fi
 
-VOBS=$(sudo ls "$VIDEODIR"/VTS_01_*.VOB 2>/dev/null | grep -v VTS_01_0.VOB | sort)
+VOBS=$(sudo find "$VIDEODIR" -name 'VTS_01_*.VOB' ! -name 'VTS_01_0.VOB' | sort)
 
 if [ -z "$VOBS" ]; then
     echo "No VTS_01_*.VOB files found in $VIDEODIR"
