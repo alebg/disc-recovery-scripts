@@ -14,9 +14,10 @@ mkdir -p "$MOUNTPOINT"
 sudo umount "$MOUNTPOINT" 2>/dev/null
 
 echo "Mounting $ISO..."
-sudo mount -o loop,ro,uid=$(id -u),gid=$(id -g) "$ISO" "$MOUNTPOINT"
+sudo mount -o loop,ro "$ISO" "$MOUNTPOINT"
 
 if [ $? -eq 0 ]; then
+    sudo chmod -R a+rX "$MOUNTPOINT"
     echo "Mounted at $MOUNTPOINT"
     echo ""
     echo "=== Contents ==="
